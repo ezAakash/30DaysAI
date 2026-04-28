@@ -1,0 +1,122 @@
+Why LangGraph Exists ?
+
+LangChain vs LangGraph 
+
+LangChain :
+open source library designed to simplify the process of building LLM based applications.
+
+It provides modular building blocks that let you create sophisticated LLM-based workflows with ease.
+
+LangChain consists of mulitple components 
+1. Model component gives us unified interface to interact with various LLM providers.
+2. Prompts component help you engineer prompts 
+3. Retrievers components helps you fetch relevant document from a vector store / knowledge base.
+
+but the biggest offering of langChain is "CHAINS".
+
+What we do with LangChain 
+
+1. Simple conversational workflows like chatbots, Text Summarizers.
+2. Multistep worflows ( topic ---> prompt --- > LLM ----> prompts ---- > LLM ----> output)
+3. RAG applications ( comapany assistant : prompt ---> retriever ---> fetch ( this is what we call context ))
+ ----> LLM ----> response 
+4. Basic Level agents. ( LangChain have concepts of tools, and LLM can decided what tool will be called when)
+
+
+Right now , this isn't a agentic application its an workflow.
+
+Workflows: are systems where LLMs and tools are orchestrated through predefined code paths.
+
+Agents: on the other hand, are systems where LLMs "dynamically" direct their own processes and tool usage
+, maintaining control over how they accomplish tasks.
+
+
+Automated Hirigng workflow :
+
+                                Start 
+                                  |
+                                  |
+                            Hiring Request ( Prompt )
+                                  |
+                                  |
+                No    * - - - Create JD 
+                      \           | 
+                        \         |
+                             JD Apporval ( Human In the loop : do you like it )
+                                  |
+                                  |
+                                 Yes 
+                                  |
+                                  |
+                               Post JD ( post on some job platform : like naukari or Linkedin API )
+                                  | 
+                                  | 
+                              Wait 7 days 
+                                  | 
+                                  |
+                           Monitor Applications ( our system will check the application count on linkdIn)
+                                  | 
+                                  |
+                                  |
+                             Enough Applications 
+                            /                   \
+                           /                     \
+                          /                       \
+                         /                         \
+                        No                         Yes 
+                        |                           |
+                        |                           |
+                        |                         Shortlist ( Resume Parser )
+                    Modify JD                       |
+                        |                           |
+                        |                         Schedule ( tool calender , mail )
+                        |                           |
+                   Wait 48 hours                    |
+                                                Conduct Interview ( Interviewer )
+            ( then to monitor part )                |
+                                                    |
+                                                Selected
+                                              /          \
+                                             /            \
+                                            /             No
+                                          Yes              \
+                                        /                   \
+     ( mail api )              Send Offer letter       Regret Email
+                                /
+                    ( if accepted  )
+                /                   \
+            Yes                     NO 
+        /                             \
+    Onboarding                      Renegotiate and move to send offer stage.
+    |                               ( human in the loop )
+  End 
+
+
+Now , is the time to change this into code : using LangChain ?
+
+But the question is can we build this using LangChain ... Lets find out :
+
+# Challenges 
+
+1. Control Flow Complexity : in LangChain we work on linear chain 
+    - non linear 
+        - conditional branching 
+        - Loops 
+        - Jumps in multiple places in the workflow.
+
+* These constructs are not there in LangChain to overcome that we need to write a bunch of glue code which make code heavy.
+
+
+# While on the other hand in LangGraph we represent the complete workflow as graph. 
+# and each task here : is a node and we connect these nodes using edges.
+# we can use these edges for looping and branching.
+
+
+# Challenge 2 : 
+                     STATE HANDLING
+
+
+
+
+
+
