@@ -1,0 +1,196 @@
+What is agentic AI ?
+- with minimal human intervention, agentic AI can autonomously perform tasks, make decisions
+and adapt to new situations. 
+- It can learn from its environment, gather information, and take actions to achieve specifically
+defined goals.
+
+- Proactive 
+
+Key Characteristics of Agentic AI:
+1. autonomous
+2. Goal Oriented
+3. Planning
+4. Reasoning
+5. Adapatibility 
+6. Context Awareness
+
+first :
+                                      Autonomy 
+
+  - it refers to AI system ability to make decision and take actions on its own achieve a given
+  goal, without needing step by step human instruction. 
+
+  1. our AI recruiter is autonomous.
+  2. Its proactive 
+  3. Autonomy in multiple faces:
+      - decision making : reading resumes to select candidate for interview.
+      - Execution 
+      - Tool Usage : which tool to use for a specific task, is also autonomy.
+
+  4. Autonomuy can be controlled and must be controlled :
+      - Persmission Scope : Limit what tools or acitons the agent can perfome indepentenly.
+      ( can screen candidates , but needs approval before rejecting anyone .)
+
+      - Human-in-the-loop : Insert checkpoints where human approval is required before continuing.
+      ( can i post this JD .)
+
+      - Override Controls : Allow users to stop, pause or change the agent's behavior at any time.
+      ( pause screening command to halt resume processing.)
+
+      - Guardrails / Policies : Define hard rules or ethical boundaries the agent MUST follow.
+      ( Never schedule interviews on weekends or never be informal.)
+
+  5. Autonomy can be dangerous :
+      - sends job offers with incorrect salries or terms. 
+      - sortlisting candidates by age or nationality, voilating anti-discrimination laws.
+      - spending extra on Linkedin Ads.
+
+
+Second :
+                                      Goal Oriented
+
+      Goal - oriented means that AI System operates with a persistent objective in mind 
+      and continuously directs its actions to achieve the objective, rather than just resonding to 
+      isolated promps. 
+
+      - Goals acts as a compass for autonomy.
+      - Goarls can come with constraints or indepentently. 
+      - Goal are stored in core memory
+      - can be updated or modified / altered mid way as needed. 
+
+
+Third :
+                                      Planning 
+
+      Planning is the ability of an AI system to break down a complex task into smaller, manageable steps
+      and determine the best sequence of actions needed to achieve a specific goal. 
+
+      Steps 1. Generating multiple candidates plans
+            * Plan A : Post JD on LinkedIn, Github Jobs, AngelList.
+            * Plan B : Use internal referels and hiring agencies.
+
+      Steps 2. Evaluate each plan
+            * Efficiency  ( which is faster ? )
+            * Tool Availability ( which tools do we have access to ? )
+            * Cost ( does it require premium tools ?)
+            * Risk ( will it fail if we get no applicants ?)
+            * Alignment with constraints ( remote-only ? budget ?)
+      
+      Steps 3. Select the best plan with the help of : 
+      * Human in the loop : input ( e.g what's of the option do you prefer ?)
+      * A pre-programmed policy ( e.g "Favor low-cost channels first")
+
+
+Fourth :
+                                      Reasoning 
+
+      Reasoning is the cognitive ability of an AI system to analyze information, draw conclusions, and make informed decisions based on logic and evidence. 
+      - both while planning and executing actions in real time.
+
+      Reasoning During Planning : 
+      1. Goal decomposition - break down abstract goals into concrete steps.
+      2. Tool Selection - Decide which tools will be needed for which steps.
+      3. Resource Estimation - Estimate time, dependencies, risks.
+
+
+      planning is happing because of reasoning ability of agent.
+
+      Reasoning During Execution :
+      1. Decision making - choosing between options ( 3 candidates match -> schedule 2 best, reject 1)
+      2. HITL handling - Knowing when to pause and ask for help ( unsure about salary range ).
+      3. Error handling - Interpreting tool/API failures and recovering.
+
+
+Fifth :
+                                      Adaptability 
+
+      Adaptability is the ability of an AI system to adjust its behavior and strategies in response to changing circumstances, new information, or unexpected challenges.
+      all while staying alinged with the goal. 
+
+      ex: low reach of candidates : so, it adapt by trying new channels, adjusting the JD
+      2. failures
+      3. changing goals ( hiring as a freelancer )
+      4. External feedback ( less no of applications )
+
+
+      - any agentic sysetm is designed to work in a dynamic environment where conditions 
+        can change rapidly, so adaptability is crucial for success. 
+        here env : is job market, candidate behavior, company needs etc.
+
+Sixth :
+                                      Context Awareness
+
+      is the agent ability to understand , retain and utilize relevant information from the 
+      ongoing task, past interactions, user preferences, and environmental cures to make better decision 
+      throughout a multi-step process.
+
+
+      Types :
+        a. original goal.
+        b. Progress till now + Interaction activity. ( job description was finalized and posted to linken and github jobs )
+        c. Environment state ( number of applicants so far = 8 or promotion is ending in 2 days)
+        d. User specific preference ( prefers remote - first candidates)
+        e. Tool response ( resume parser -> "candidate B has 3 years Django + AWS experience ")
+        f. Policy or Gaurdrails ( "Don't send offer with out explicit approval")
+
+      Context awareness is implemented through memeory.
+
+      Short Term Memory ( tool response, user input, current environment state )
+
+      Long term Memory. ( policy or Gaurdrails )
+
+
+
+
+What are the high level components of an Agentic AI System ?
+
+- Brain 
+- Orchestrator 
+- Tools 
+- Memory
+- Supervisor
+
+                                 ( Brain )
+
+If your Agentic system is based on LLM , then LLM is the brain of the system, responsible for reasoning, planning and decision making.
+what it does ?
+- Goal Interpretation 
+- Planning 
+- Reasoning
+- Tool Selection 
+- Communication ( with users and tools )
+
+
+                                  ( Orchestrator )
+
+Is basically that guy that executes the plan created by the brain , by calling the right 
+tools in the right sequence, and also handling the flow of information between the brain, tools and memory.
+
+- Task Sequencing 
+- Conditional Routing 
+- Retry Logic
+- Looping & Iterations 
+- Delegations ( when to call the brain for help or when to ask for human input )
+
+
+                                  ( Tools )
+
+is basically the external APIs, external action or Knowledge Base Access.
+- Information Gathering ( web search, database query )
+- Action Execution ( sending emails, posting on job boards )
+
+
+                                  ( Memory )    
+  Short Term Memory : Temporary storage for current context, tool responses, user inputs.
+  Long Term Memory : Persistent storage for goals, policies, past interactions, user preferences.
+  State Tracking : Keeping track of the current state of the task, progress, and environment.
+
+
+                                  ( Supervisor )  
+
+it is what , lets us implement Human in the loop, override controls, guardrails and policies.
+- Human in the Loop : Interface for human feedback, approvals, and interventions.
+- Override Controls : Mechanism to pause, stop or modify agent behavior.
+- Guardrails & Policies : Define and enforce rules, ethical guidelines, and constraints on agent actions
+- Edge case escalation : alerts humans when uncertainty / conflicts arises ( like person not from IIT still, his resume is really good.)
+
