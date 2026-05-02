@@ -115,6 +115,107 @@ But the question is can we build this using LangChain ... Lets find out :
 # Challenge 2 : 
                      STATE HANDLING
 
+              ( workflow se related points hai )
+2. The data points and there value evolve over time - so , we need to track them . so , our agent work properly.
+
+     ( and combining this we make state of the application )
+
+    # Why handling this state in LangChain is not apt ?
+    # LangChain has memory : conversational memory... which we can send forward and backward in the chain . 
+    # But training and storing ( key : value ) pair kind of data is not possible in LangChain . 
+
+    # or to actually use it : we need to manually add a global dictionary ... and we need to update each at all the data steps.
+
+    # and as the complexity of the workflow increases , maintaining it become difficult. 
+
+    so, in short : there are two ways : use this state as conversational memory or use a self made dictionary . 
+
+""
+So, in LangGraph when we create a graph , at the same moment we create state object :
+which can be made in :
+# Pydantic 
+# Dictionary 
+
+These are accessible to add the nodes in the graph . and also editable by any node. 
+
+"""
+
+                                    Challenge 3 : Event Driven Execution 
+
+
+# so, whenever we make a workflow : it can be exectued in one of this two ways :
+
+                        1. Sequential                                     2. Event Driven ( in case of complex agentic sysetm )
+
+Langchain is not built for Event Driven Execution : never meant to stop execution in between the process .
+
+### If we need to do it in LangChain ... so, this complete single long chain of recruitment process. needs to to break down into multiple small chains and the Event : is handled with help of external python GLUE code .
+                        Ex : see, the JD is posted ---> waiting scipt with python ( 7 days ) --- > when this completes we 
+                             must initiate next Chain .
+
+
+
+
+While LangGraph provdes Event Driven Execution inherently. Here, since our execution is stateful .. and reaching on any particular 
+node , we can store the current state : using LangGraph feature using Checkpoint and waiting for external Trigger. 
+
+
+
+                                #Challenge 4 : Fault Tolerance 
+
+: means if there comes some issue in our workflow, can it fix itself and self fixes it . 
+
+Types of Fault that can come in : 
+1. Small Fault : kisi node level pe fault aajaye. 
+2. Big Fault : The server is down , on which you had published your workflow.
+
+
+# LangChain has no concept of Fault Tolerance : 
+### That means there chain are short lived, that's why they thought they don't need to provide fault tolerance. 
+### so, if in between a system go down , when the system again come to life .. chain start from beginning . 
+
+
+# There is a concept of : RECOVERY in LangGraph . we can start execution exactly from the point of failure of execution .
+
+( every thing is stateful here : we do this thing using Checkpoints )
+
+
+                            # Challenge 5 : Human in the LOOP.
+
+
+The person approval for JD : in the workflow or can we put the JD on the website ----- Here, HUMAN in the loop's logic comes into picture.
+
+
+It's an challegne to implement in any workflow and it become even harder in langchain , cause there's no default mechenism in langchain.
+
+
+But in LangGraph : HITL its a first class citizen . 
+
+
+                            # Challenge in LangChain and feature in LG : Nested workflows - not possible in LangChain
+
+
+we have learnt to make a single workflow. till now 
+
+### But But we can make a workflow inside a workflow. and this nested workflow can be replaced as node in the parent workflow 
+( graph )
+
+
+# we can build mutli - agent system 
+
+
+### we can bring reusablility in picture using : sub - agents .
+
+
+
+
+
+                                    # Observability 
+
+: Observability refers to how easily you can monitor , debug, and understand what your workflow is doing at runtime.
+
+
+see, LangSmith can only observe LangChain Part in the Complex application  but not the Glue Code. 
 
 
 
